@@ -1,156 +1,109 @@
 @media screen and (max-width:768px) {
 	*{
-		margin:0;
-		padding: 0;
-		box-sizing: border-box;
+		margin:0;padding: 0;
 	}
 
 	html,body{
 		height: 100%;
 		width: 100%;
-		overflow-x: hidden;
-		background: inherit; /* 继承body的背景图，避免遮挡 */
 	}
-
+	/*内容样式，使用flex布局*/
 	.content{
-		width: 100%;
-		max-width: 15rem; /* 页面最大宽度，适配大屏手机 */
+		width: 15rem;
 		display: flex;
   		flex-direction: column;
- 		align-items: center; /* 整体内容水平居中 */
-  		gap: 1rem; /* 搜索栏与常用网站之间的间距 */
-  		padding: 1rem 0.5rem; /* 上下内边距，避免贴顶 */
-		/* 取消绝对定位，改用自然流布局，避免错位 */
-		position: static;
-		top: auto;
-		left: auto;
-		transform: none;
-	}
-
-	/* 搜索栏：Flex布局，三个元素无缝衔接（核心！） */
+ 		justify-content: space-around;
+  		align-items: center;
+  		/*height: 46rem;*/
+  		position: absolute;
+  		top:26%;
+}
+	/*搜索框总体样式*/
 	.baidu{
-		width: 100% !important; /* 占满content宽度 */
-		display: flex; /* 子元素并排 */
-		align-items: center;
-		height: 2rem; /* 搜索栏高度，可微调 */
+		position: relative;
+		width: 16rem;
+		height: 2.6rem;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.baidu-2{
-		width: 100%;
-		display: flex; /* 继承Flex布局 */
+		height: 2.6rem;
 	}
 
-	/* 百度选择框：左侧固定宽度 */
+/*取消多级搜索，只保留百度*/
 	#Select-2{
-		width: 3rem; /* 选择框宽度，适配“百度”文字 */
-		height: 100%;
-		background: #fff;
-		border: 1px solid #e5e5e5;
-		border-right: none; /* 取消右边框，与输入框无缝 */
-		font-size: 0.9rem;
-		color: #333;
-		text-align: center;
-		line-height: 2rem; /* 文字垂直居中 */
-		cursor: pointer;
+		position: absolute;
+		left: 0;
 	}
 
-	.Select-box, .Select-box li{
-		display: none; /* 保持隐藏多级搜索 */
+	.Select-box {
+		display: none;
+		float: none;
 	}
 
-	/* 输入框：中间占满剩余空间 */
+	.Select-box li{
+		background-color: yellow;
+		display: none;
+		float: none;
+	}
+	/*输入框样式*/
 	#kw-2{
-		flex: 1; /* 自动占满中间所有空间 */
-		height: 100%;
-		padding: 0 0.5rem;
-		background: #fff;
-		font-size: 0.9rem;
-		line-height: 2rem;
-		border: 1px solid #e5e5e5;
-		border-left: none;
-		border-right: none; /* 取消右边框，与按钮无缝 */
-		outline: none;
-		color: #333;
+		width: 8rem;
+		height: 1.82rem;
+		border:2;
+		position: absolute;
+		padding-left: 10px;
 	}
-
-	/* 搜索按钮：右侧固定宽度，纯深蓝色 */
+	/*搜索框样式*/
 	#su-2 {
-	    width: 3rem; /* 按钮宽度，适配“搜索”文字 */
-	    height: 100%;
-	    background-color: #3385ff !important;
-	    border: 1px solid #3385ff !important;
-	    color: #fff !important;
-	    font-size: 0.9rem;
-	    line-height: 2rem;
+	    width: 2rem;
 	    text-align: center;
-	    cursor: pointer;
+	    line-height: 0rem;
+	    position: absolute;
+	    background-color: blue;
+	    border-color: blue;
+	    right: 1rem;
 	    border-radius: 0;
+	    height: 1.82rem;
 	}
-
 	#su-2:hover{
-		background-color: #2d78f4 !important;
+		background-color: blue;
 	}
 
-	#su-2:active{
-		background-color: #1a68e0 !important;
+	#su-2:avtive{
+		background-color: blue;
+		box-shadow: none;	
 	}
 	
-	/* 常用网站：Grid布局，3列排列（匹配第二种图） */
-	.jj-list-con{
+	/*content下的所有div宽度*/
+	.content div{
 		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr); /* 3列平均分布 */
-		gap: 0.5rem; /* 卡片之间的间距 */
 	}
-
-	/* 常用网站卡片样式（匹配第二种图） */
-	.jj-list-con li{
-		width: 100%; /* 继承Grid列宽 */
-		height: 2.5rem;
-		margin: 0; /* 取消原margin，用grid-gap控制间距 */
+	/*每个选择框的宽度*/
+	.content li{
+		width: 4.69rem;
 	}
-
-	.link-3{
-		width: 100%;
-		height: 100%;
-		background: rgba(0,0,0,0.35);
-		color: #fff;
-		font-size: 0.9rem;
-		line-height: 2.5rem;
-		padding: 0;
-		border-radius: 4px;
-	}
-
-	.link-3:hover{
-		background: rgba(0,0,0,0.45);
-		font-size: 0.95rem;
-	}
-
-	/* 底部版权：固定在底部，小字体 */
+	/*放弃content外的footer*/
 	.footer{  
 		display: none;
 	}
-
+	/*移动端使用的footer*/
 	.footer1{
 		display: block;
 		text-align: center;
-		position: fixed;
-		bottom: 0.5rem;
-		left: 50%;
-		transform: translateX(-50%);
-		color: white;
-		font-size: 0.7rem !important;
-		line-height: 1.2;
-		width: 100%;
-		padding: 0.2rem 0;
+		position: relative;
+		padding-top: 10px;
+		bottom: 0;
+		color:white;
 	}
 
-	/* 清除默认样式 */
 	input[type="button"], input[type="submit"], input[type="reset"] {
-		-webkit-appearance: none;
+
+	-webkit-appearance: none;
+
 	}
-	textarea {
-		-webkit-appearance: none;
-	}  
+
+	textarea {  -webkit-appearance: none;}  
 	
 }
