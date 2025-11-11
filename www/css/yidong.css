@@ -86,22 +86,27 @@
 		width: 100%;
 	}
 
-	/* 每个选择框的宽度 */
-	.content li {
-		width: 4.69rem;
-		margin: 0.3rem;
-		text-align: center;
-	}
-
-	/* 关键部分：让下方按钮居中显示 */
+	/* 每个按钮的宽度和对齐方式 */
 	.content ul,
 	.content .section,
 	.content .group {
 		display: flex;
-		flex-wrap: wrap;
 		justify-content: center;
-		align-items: center;
 		text-align: center;
+		gap: 0.3rem; /* 控制按钮之间的间距 */
+	}
+
+	/* 每个按钮固定宽度、不换行 */
+	.content li {
+		width: 4.69rem;
+		text-align: center;
+		list-style: none;
+		white-space: nowrap;
+	}
+
+	/* 禁止换行 */
+	.content ul {
+		flex-wrap: nowrap;
 	}
 
 	/* 隐藏原 footer */
