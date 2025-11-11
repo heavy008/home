@@ -2,123 +2,131 @@
 	*{
 		margin:0;
 		padding: 0;
-		box-sizing: border-box; /* 必须保留，避免边框导致宽度溢出 */
+		box-sizing: border-box;
 	}
 
 	html,body{
 		height: 100%;
 		width: 100%;
 		overflow-x: hidden;
+		background: inherit; /* 继承body的背景图，避免遮挡 */
 	}
 
 	.content{
 		width: 100%;
-		max-width: 15rem;
+		max-width: 15rem; /* 页面最大宽度，适配大屏手机 */
 		display: flex;
   		flex-direction: column;
- 		justify-content: flex-start;
-  		align-items: center;
-  		position: absolute;
-  		top: 8vh;
-  		left: 50%;
-  		transform: translateX(-50%);
-  		padding: 0 0.5rem;
+ 		align-items: center; /* 整体内容水平居中 */
+  		gap: 1rem; /* 搜索栏与常用网站之间的间距 */
+  		padding: 1rem 0.5rem; /* 上下内边距，避免贴顶 */
+		/* 取消绝对定位，改用自然流布局，避免错位 */
+		position: static;
+		top: auto;
+		left: auto;
+		transform: none;
 	}
 
-	/* 搜索框整体：固定宽度，居中，内部元素绝对定位不溢出 */
+	/* 搜索栏：Flex布局，三个元素无缝衔接（核心！） */
 	.baidu{
-		position: relative;
-		width: 13rem !important; /* 整体宽度，可微调 */
-		height: 1.82rem; /* 与内部元素同高，避免多余空间 */
+		width: 100% !important; /* 占满content宽度 */
+		display: flex; /* 子元素并排 */
+		align-items: center;
+		height: 2rem; /* 搜索栏高度，可微调 */
 	}
 
 	.baidu-2{
-		height: 100%; /* 继承父容器高度 */
+		width: 100%;
+		display: flex; /* 继承Flex布局 */
 	}
 
-	/* 百度选择框：左侧第一个，与输入框无缝衔接 */
+	/* 百度选择框：左侧固定宽度 */
 	#Select-2{
-		position: absolute;
-		left: 0;
-		top: 0; /* 顶部齐平 */
-		width: 2.5rem; /* 固定宽度 */
-		height: 100%; /* 与父容器同高 */
-		border: 2px solid #ccc;
-		border-right: none !important; /* 取消右边框，与输入框无缝连 */
-		background: #fff; /* 白色背景，和输入框一致 */
-		font-size: 0.85rem;
+		width: 3rem; /* 选择框宽度，适配“百度”文字 */
+		height: 100%;
+		background: #fff;
+		border: 1px solid #e5e5e5;
+		border-right: none; /* 取消右边框，与输入框无缝 */
+		font-size: 0.9rem;
+		color: #333;
 		text-align: center;
-		line-height: calc(1.82rem - 4px); /* 减去边框高度，文字居中 */
+		line-height: 2rem; /* 文字垂直居中 */
+		cursor: pointer;
 	}
 
-	.Select-box {
-		display: none;
-		float: none;
+	.Select-box, .Select-box li{
+		display: none; /* 保持隐藏多级搜索 */
 	}
 
-	.Select-box li{
-		background-color: yellow;
-		display: none;
-		float: none;
-	}
-
-	/* 输入框：中间，左右无缝衔接选择框和按钮 */
+	/* 输入框：中间占满剩余空间 */
 	#kw-2{
-		width: calc(100% - 4.5rem) !important; /* 总宽度 - 选择框宽度 - 按钮宽度 */
-		height: 100%; /* 与父容器同高 */
-		position: absolute;
-		left: 2.5rem; /* 与选择框宽度一致，无缝衔接 */
-		top: 0; /* 顶部齐平 */
-		padding-left: 10px;
-		background: rgba(255,255,255,0.9);
-		font-size: 0.85rem;
-		line-height: calc(1.82rem - 4px); /* 文字垂直居中 */
-		border: 2px solid #ccc; /* 上下边框保留，左右边框取消 */
-		border-left: none !important;
-		border-right: none !important;
-		outline: none; /* 去掉聚焦时的默认边框 */
+		flex: 1; /* 自动占满中间所有空间 */
+		height: 100%;
+		padding: 0 0.5rem;
+		background: #fff;
+		font-size: 0.9rem;
+		line-height: 2rem;
+		border: 1px solid #e5e5e5;
+		border-left: none;
+		border-right: none; /* 取消右边框，与按钮无缝 */
+		outline: none;
+		color: #333;
 	}
 
-	/* 搜索按钮：右侧，与输入框无缝衔接，纯深蓝色 */
+	/* 搜索按钮：右侧固定宽度，纯深蓝色 */
 	#su-2 {
-	    width: 2rem; /* 固定宽度 */
-	    height: 100%; /* 与父容器同高 */
-	    position: absolute;
-	    right: 0;
-	    top: 0; /* 顶部齐平 */
-	    background-color: #3385ff !important; /* 百度经典深蓝色，固定不变 */
-	    border: 2px solid #3385ff !important; /* 边框与背景同色 */
-	    border-left: none !important; /* 取消左边框，与输入框无缝连 */
-	    border-radius: 0;
+	    width: 3rem; /* 按钮宽度，适配“搜索”文字 */
+	    height: 100%;
+	    background-color: #3385ff !important;
+	    border: 1px solid #3385ff !important;
 	    color: #fff !important;
-	    font-size: 0.85rem;
-	    line-height: calc(1.82rem - 4px); /* 文字垂直居中 */
+	    font-size: 0.9rem;
+	    line-height: 2rem;
 	    text-align: center;
 	    cursor: pointer;
+	    border-radius: 0;
 	}
 
-	/* 按钮hover/active保持深蓝色，只变深浅 */
 	#su-2:hover{
 		background-color: #2d78f4 !important;
-		border-color: #2d78f4 !important;
 	}
 
 	#su-2:active{
 		background-color: #1a68e0 !important;
-		border-color: #1a68e0 !important;
-		box-shadow: none;	
 	}
 	
-	.content div{
+	/* 常用网站：Grid布局，3列排列（匹配第二种图） */
+	.jj-list-con{
 		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr); /* 3列平均分布 */
+		gap: 0.5rem; /* 卡片之间的间距 */
 	}
 
-	.content li{
-		width: 31%;
-		margin: 0.15rem;
+	/* 常用网站卡片样式（匹配第二种图） */
+	.jj-list-con li{
+		width: 100%; /* 继承Grid列宽 */
+		height: 2.5rem;
+		margin: 0; /* 取消原margin，用grid-gap控制间距 */
 	}
 
-	/* 底部版权：保持小字体，不占空间 */
+	.link-3{
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.35);
+		color: #fff;
+		font-size: 0.9rem;
+		line-height: 2.5rem;
+		padding: 0;
+		border-radius: 4px;
+	}
+
+	.link-3:hover{
+		background: rgba(0,0,0,0.45);
+		font-size: 0.95rem;
+	}
+
+	/* 底部版权：固定在底部，小字体 */
 	.footer{  
 		display: none;
 	}
@@ -137,7 +145,7 @@
 		padding: 0.2rem 0;
 	}
 
-	/* 清除移动端默认样式，避免按钮变形 */
+	/* 清除默认样式 */
 	input[type="button"], input[type="submit"], input[type="reset"] {
 		-webkit-appearance: none;
 	}
