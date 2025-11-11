@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 仅微调transform实现右移1px（核心修改）*/
+	/*内容样式，使用flex布局 - 调整transform实现右移3px（核心修改）*/
 	.content{
 		width: 15rem;
 		display: flex;
@@ -18,7 +18,7 @@
   		position: absolute;
   		top:26%;
   		left: 50%; /* 水平居中第一步 */
-  		transform: translateX(calc(-50% + 1px)); /* 微调：-50%保持居中，+1px实现右移1像素 */
+  		transform: translateX(calc(-50% + 3px)); /* 最终：-50%保持居中，+3px实现右移3像素（1px+新增2px） */
   		margin-top: -40px; /* 整体上移40px（保留之前设置） */
 	}
 	/*搜索框总体样式（完全保留最初代码，未改动）*/
