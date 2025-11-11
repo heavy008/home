@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 仅添加水平居中（唯一核心修改）*/
+	/*内容样式，使用flex布局 - 仅添加水平居中+整体上移（核心修改）*/
 	.content{
 		width: 15rem;
 		display: flex;
@@ -17,8 +17,9 @@
   		/*height: 46rem;*/
   		position: absolute;
   		top:26%;
-  		left: 50%; /* 新增：整体水平居中第一步 */
-  		transform: translateX(-50%); /* 新增：整体水平居中第二步 */
+  		left: 50%; /* 水平居中第一步 */
+  		transform: translateX(-50%); /* 水平居中第二步 */
+  		margin-top: -40px; /* 核心：整体上移40px，可按需调整数值（负数上移，正数下移） */
 	}
 	/*搜索框总体样式（完全保留最初代码，未改动）*/
 	.baidu{
