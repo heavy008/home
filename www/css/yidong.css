@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局*/
+	/*内容样式，使用flex布局 - 关键修改：添加水平居中+保持原有垂直位置*/
 	.content{
 		width: 15rem;
 		display: flex;
@@ -17,7 +17,9 @@
   		/*height: 46rem;*/
   		position: absolute;
   		top:26%;
-}
+  		left: 50%; /* 新增：水平居中第一步 */
+  		transform: translateX(-50%); /* 新增：水平居中第二步（抵消left:50%） */
+	}
 	/*搜索框总体样式*/
 	.baidu{
 		position: relative;
@@ -35,6 +37,8 @@
 	#Select-2{
 		position: absolute;
 		left: 0;
+		top: 50%; /* 新增：下拉框垂直居中 */
+		transform: translateY(-50%); /* 新增：下拉框垂直居中 */
 	}
 
 	.Select-box {
@@ -47,31 +51,37 @@
 		display: none;
 		float: none;
 	}
-	/*输入框样式*/
+	/*输入框样式 - 关键修改：调整left让输入框对齐中间*/
 	#kw-2{
 		width: 8rem;
 		height: 1.82rem;
-		border:2;
+		border: 2px solid #ddd; /* 补充：原border:2无颜色，可能导致边框看不见 */
 		position: absolute;
+		left: 3rem; /* 调整：让输入框在下拉框和搜索按钮之间居中 */
+		top: 50%; /* 新增：输入框垂直居中 */
+		transform: translateY(-50%); /* 新增：输入框垂直居中 */
 		padding-left: 10px;
 	}
-	/*搜索框样式*/
+	/*搜索框样式 - 关键修改：调整right让按钮对齐*/
 	#su-2 {
 	    width: 2rem;
 	    text-align: center;
-	    line-height: 0rem;
+	    line-height: 1.82rem; /* 修正：原line-height:0导致文字垂直居中失效 */
 	    position: absolute;
 	    background-color: blue;
 	    border-color: blue;
-	    right: 1rem;
+	    right: 2rem; /* 调整：和输入框对齐 */
 	    border-radius: 0;
 	    height: 1.82rem;
+	    top: 50%; /* 新增：按钮垂直居中 */
+	    transform: translateY(-50%); /* 新增：按钮垂直居中 */
+	    color: white; /* 补充：文字变白，否则看不见 */
 	}
 	#su-2:hover{
 		background-color: blue;
 	}
 
-	#su-2:avtive{
+	#su-2:active{ /* 修正：原avtive拼写错误 */
 		background-color: blue;
 		box-shadow: none;	
 	}
@@ -99,9 +109,7 @@
 	}
 
 	input[type="button"], input[type="submit"], input[type="reset"] {
-
 	-webkit-appearance: none;
-
 	}
 
 	textarea {  -webkit-appearance: none;}  
