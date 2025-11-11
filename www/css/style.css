@@ -298,7 +298,7 @@ body {
     text-align: center;
     /* 关键修改：从 absolute 改成 fixed，固定在浏览器底部 */
     position: fixed;
-    bottom: 0px; /* 距离底部的距离，可按需调整 */
+    bottom: 8px; /* 距离底部的距离，可按需调整 */
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999; /* 层级拉到最高，确保不被任何内容覆盖 */
