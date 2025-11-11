@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 关键修改：添加水平居中+保持原有垂直位置*/
+	/*内容样式，使用flex布局 - 仅添加水平居中（核心修改）*/
 	.content{
 		width: 15rem;
 		display: flex;
@@ -17,10 +17,10 @@
   		/*height: 46rem;*/
   		position: absolute;
   		top:26%;
-  		left: 50%; /* 新增：水平居中第一步 */
-  		transform: translateX(-50%); /* 新增：水平居中第二步（抵消left:50%） */
+  		left: 50%; /* 新增：让整个内容区水平居中 */
+  		transform: translateX(-50%); /* 新增：抵消left:50%，实现完美居中 */
 	}
-	/*搜索框总体样式*/
+	/*搜索框总体样式（保持原有）*/
 	.baidu{
 		position: relative;
 		width: 16rem;
@@ -33,12 +33,10 @@
 		height: 2.6rem;
 	}
 
-/*取消多级搜索，只保留百度*/
+/*取消多级搜索，只保留百度（保持原有）*/
 	#Select-2{
 		position: absolute;
-		left: 0;
-		top: 50%; /* 新增：下拉框垂直居中 */
-		transform: translateY(-50%); /* 新增：下拉框垂直居中 */
+		left: 0; /* 不修改垂直相关样式 */
 	}
 
 	.Select-box {
@@ -51,54 +49,50 @@
 		display: none;
 		float: none;
 	}
-	/*输入框样式 - 关键修改：调整left让输入框对齐中间*/
+	/*输入框样式 - 仅调整left实现水平对齐（不修改垂直）*/
 	#kw-2{
 		width: 8rem;
 		height: 1.82rem;
-		border: 2px solid #ddd; /* 补充：原border:2无颜色，可能导致边框看不见 */
+		border: 2px solid #ddd; /* 补充：原border:2无颜色，避免边框透明 */
 		position: absolute;
-		left: 3rem; /* 调整：让输入框在下拉框和搜索按钮之间居中 */
-		top: 50%; /* 新增：输入框垂直居中 */
-		transform: translateY(-50%); /* 新增：输入框垂直居中 */
+		left: 3rem; /* 调整：让输入框在下拉框和按钮之间水平对齐 */
 		padding-left: 10px;
 	}
-	/*搜索框样式 - 关键修改：调整right让按钮对齐*/
+	/*搜索框样式 - 仅调整right实现水平对齐（不修改垂直）*/
 	#su-2 {
 	    width: 2rem;
 	    text-align: center;
-	    line-height: 1.82rem; /* 修正：原line-height:0导致文字垂直居中失效 */
+	    line-height: 1.82rem; /* 修正：原line-height:0导致文字看不见，不影响垂直位置 */
 	    position: absolute;
 	    background-color: blue;
 	    border-color: blue;
-	    right: 2rem; /* 调整：和输入框对齐 */
+	    right: 2rem; /* 调整：和输入框水平对齐 */
 	    border-radius: 0;
 	    height: 1.82rem;
-	    top: 50%; /* 新增：按钮垂直居中 */
-	    transform: translateY(-50%); /* 新增：按钮垂直居中 */
-	    color: white; /* 补充：文字变白，否则看不见 */
+	    color: white; /* 补充：文字变白，避免蓝色背景上看不见 */
 	}
 	#su-2:hover{
 		background-color: blue;
 	}
 
-	#su-2:active{ /* 修正：原avtive拼写错误 */
+	#su-2:active{ /* 修正：原avtive拼写错误（语法修正，不影响布局）*/
 		background-color: blue;
 		box-shadow: none;	
 	}
 	
-	/*content下的所有div宽度*/
+	/*content下的所有div宽度（保持原有）*/
 	.content div{
 		width: 100%;
 	}
-	/*每个选择框的宽度*/
+	/*每个选择框的宽度（保持原有）*/
 	.content li{
 		width: 4.69rem;
 	}
-	/*放弃content外的footer*/
+	/*放弃content外的footer（保持原有）*/
 	.footer{  
 		display: none;
 	}
-	/*移动端使用的footer*/
+	/*移动端使用的footer（保持原有）*/
 	.footer1{
 		display: block;
 		text-align: center;
