@@ -1,27 +1,25 @@
 @media screen and (max-width:768px) {
-	* {
-		margin: 0;
-		padding: 0;
+	*{
+		margin:0;padding: 0;
 	}
 
-	html, body {
+	html,body{
 		height: 100%;
 		width: 100%;
 	}
-
-	/* 主内容区域 */
-	.content {
+	/*内容样式，使用flex布局*/
+	.content{
 		width: 15rem;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-		position: absolute;
-		top: 26%;
-	}
-
-	/* 搜索框整体样式 */
-	.baidu {
+  		flex-direction: column;
+ 		justify-content: space-around;
+  		align-items: center;
+  		/*height: 46rem;*/
+  		position: absolute;
+  		top:26%;
+}
+	/*搜索框总体样式*/
+	.baidu{
 		position: relative;
 		width: 16rem;
 		height: 2.6rem;
@@ -29,12 +27,12 @@
 		transform: translateX(-50%);
 	}
 
-	.baidu-2 {
+	.baidu-2{
 		height: 2.6rem;
 	}
 
-	/* 只保留百度搜索 */
-	#Select-2 {
+/*取消多级搜索，只保留百度*/
+	#Select-2{
 		position: absolute;
 		left: 0;
 	}
@@ -44,94 +42,68 @@
 		float: none;
 	}
 
-	.Select-box li {
+	.Select-box li{
 		background-color: yellow;
 		display: none;
 		float: none;
 	}
-
-	/* 输入框样式 */
-	#kw-2 {
+	/*输入框样式*/
+	#kw-2{
 		width: 8rem;
 		height: 1.82rem;
-		border: 2;
+		border:2;
 		position: absolute;
 		padding-left: 10px;
 	}
-
-	/* 搜索按钮样式 */
+	/*搜索框样式*/
 	#su-2 {
-		width: 2rem;
-		text-align: center;
-		line-height: 0rem;
-		position: absolute;
+	    width: 2rem;
+	    text-align: center;
+	    line-height: 0rem;
+	    position: absolute;
+	    background-color: blue;
+	    border-color: blue;
+	    right: 1rem;
+	    border-radius: 0;
+	    height: 1.82rem;
+	}
+	#su-2:hover{
 		background-color: blue;
-		border-color: blue;
-		right: 1rem;
-		border-radius: 0;
-		height: 1.82rem;
 	}
 
-	#su-2:hover {
+	#su-2:avtive{
 		background-color: blue;
+		box-shadow: none;	
 	}
-
-	#su-2:active {
-		background-color: blue;
-		box-shadow: none;
-	}
-
-	/* content 下的所有 div 宽度 */
-	.content div {
+	
+	/*content下的所有div宽度*/
+	.content div{
 		width: 100%;
 	}
-
-	/* 每个按钮的宽度和对齐方式 */
-	.content ul,
-	.content .section,
-	.content .group {
-		display: flex;
-		justify-content: center;
-		text-align: center;
-		gap: 0.3rem; /* 控制按钮之间的间距 */
-	}
-
-	/* 每个按钮固定宽度、不换行 */
-	.content li {
+	/*每个选择框的宽度*/
+	.content li{
 		width: 4.69rem;
-		text-align: center;
-		list-style: none;
-		white-space: nowrap;
 	}
-
-	/* 禁止换行 */
-	.content ul {
-		flex-wrap: nowrap;
-	}
-
-	/* 隐藏原 footer */
-	.footer {
+	/*放弃content外的footer*/
+	.footer{  
 		display: none;
 	}
-
-	/* 移动端 footer */
-	.footer1 {
+	/*移动端使用的footer*/
+	.footer1{
 		display: block;
 		text-align: center;
 		position: relative;
 		padding-top: 10px;
 		bottom: 0;
-		color: white;
+		color:white;
 	}
 
-	/* 禁用默认按钮外观 */
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"] {
-		-webkit-appearance: none;
+	input[type="button"], input[type="submit"], input[type="reset"] {
+
+	-webkit-appearance: none;
+
 	}
 
-	textarea {
-		-webkit-appearance: none;
-	}
+	textarea {  -webkit-appearance: none;}  
+	
 }
