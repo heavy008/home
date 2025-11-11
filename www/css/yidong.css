@@ -7,7 +7,7 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 仅添加水平居中（核心修改）*/
+	/*内容样式，使用flex布局 - 仅添加水平居中（唯一核心修改）*/
 	.content{
 		width: 15rem;
 		display: flex;
@@ -17,10 +17,10 @@
   		/*height: 46rem;*/
   		position: absolute;
   		top:26%;
-  		left: 50%; /* 新增：让整个内容区水平居中 */
-  		transform: translateX(-50%); /* 新增：抵消left:50%，实现完美居中 */
+  		left: 50%; /* 新增：整体水平居中第一步 */
+  		transform: translateX(-50%); /* 新增：整体水平居中第二步 */
 	}
-	/*搜索框总体样式（保持原有）*/
+	/*搜索框总体样式（完全保留最初代码，未改动）*/
 	.baidu{
 		position: relative;
 		width: 16rem;
@@ -33,10 +33,10 @@
 		height: 2.6rem;
 	}
 
-/*取消多级搜索，只保留百度（保持原有）*/
+/*取消多级搜索，只保留百度（完全保留最初代码）*/
 	#Select-2{
 		position: absolute;
-		left: 0; /* 不修改垂直相关样式 */
+		left: 0;
 	}
 
 	.Select-box {
@@ -49,50 +49,48 @@
 		display: none;
 		float: none;
 	}
-	/*输入框样式 - 仅调整left实现水平对齐（不修改垂直）*/
+	/*输入框样式（完全保留最初代码，未改动）*/
 	#kw-2{
 		width: 8rem;
 		height: 1.82rem;
-		border: 2px solid #ddd; /* 补充：原border:2无颜色，避免边框透明 */
+		border:2;
 		position: absolute;
-		left: 3rem; /* 调整：让输入框在下拉框和按钮之间水平对齐 */
 		padding-left: 10px;
 	}
-	/*搜索框样式 - 仅调整right实现水平对齐（不修改垂直）*/
+	/*搜索框样式（完全保留最初代码，未改动）*/
 	#su-2 {
 	    width: 2rem;
 	    text-align: center;
-	    line-height: 1.82rem; /* 修正：原line-height:0导致文字看不见，不影响垂直位置 */
+	    line-height: 0rem;
 	    position: absolute;
 	    background-color: blue;
 	    border-color: blue;
-	    right: 2rem; /* 调整：和输入框水平对齐 */
+	    right: 1rem;
 	    border-radius: 0;
 	    height: 1.82rem;
-	    color: white; /* 补充：文字变白，避免蓝色背景上看不见 */
 	}
 	#su-2:hover{
 		background-color: blue;
 	}
 
-	#su-2:active{ /* 修正：原avtive拼写错误（语法修正，不影响布局）*/
+	#su-2:avtive{
 		background-color: blue;
 		box-shadow: none;	
 	}
 	
-	/*content下的所有div宽度（保持原有）*/
+	/*content下的所有div宽度（保留最初）*/
 	.content div{
 		width: 100%;
 	}
-	/*每个选择框的宽度（保持原有）*/
+	/*每个选择框的宽度（保留最初）*/
 	.content li{
 		width: 4.69rem;
 	}
-	/*放弃content外的footer（保持原有）*/
+	/*放弃content外的footer（保留最初）*/
 	.footer{  
 		display: none;
 	}
-	/*移动端使用的footer（保持原有）*/
+	/*移动端使用的footer（保留最初）*/
 	.footer1{
 		display: block;
 		text-align: center;
