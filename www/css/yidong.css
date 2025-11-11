@@ -2,47 +2,49 @@
 	*{
 		margin:0;
 		padding: 0;
-		box-sizing: border-box; /* 新增：统一盒模型，避免padding导致宽度溢出 */
+		box-sizing: border-box;
 	}
 
 	html,body{
 		height: 100%;
 		width: 100%;
-		overflow-x: hidden; /* 禁止横向滚动，避免内容溢出 */
+		overflow-x: hidden;
 	}
-	/* 核心修复：.content 水平居中+自适应宽度 */
+
 	.content{
-		/* width: 15rem; 删掉固定宽度，改用自适应 */
-		width: 100%; /* 占满视口宽度 */
-		max-width: 15rem; /* 限制最大宽度，避免大屏手机上太宽 */
+		width: 100%;
+		max-width: 15rem;
 		display: flex;
   		flex-direction: column;
- 		justify-content: flex-start; /* 改为从上往下排列，更自然 */
-  		align-items: center; /* 内部元素水平居中 */
+ 		justify-content: flex-start;
+  		align-items: center;
   		position: absolute;
-  		top: 8vh; /* 用视口高度，比固定26%更适配不同屏幕 */
-  		left: 50%; /* 水平居中第一步：左移50% */
-  		transform: translateX(-50%); /* 水平居中第二步：左移自身50% */
-  		padding: 0 0.5rem; /* 左右留白，避免内容贴边 */
+  		top: 8vh;
+  		left: 50%;
+  		transform: translateX(-50%);
+  		padding: 0 0.5rem;
 	}
-	/* 搜索框总体样式：自适应宽度，避免超出屏幕 */
+
+	/* 搜索框整体：固定宽度，居中 */
 	.baidu{
 		position: relative;
-		/* width: 16rem; 删掉固定宽度 */
-		width: 100%; /* 占满父容器 */
-		max-width: 16rem; /* 限制最大宽度 */
+		width: 13rem !important; /* 搜索框整体宽度，可微调 */
 		height: 2.6rem;
-		/* 删掉 left 和 transform，继承 .content 的居中 */
 	}
 
 	.baidu-2{
 		height: 2.6rem;
 	}
 
-	/* 取消多级搜索，只保留百度 */
+	/* 选择框：固定宽度，与输入框无缝衔接 */
 	#Select-2{
 		position: absolute;
 		left: 0;
+		width: 2.5rem;
+		height: 1.82rem; /* 与输入框、按钮同高，垂直对齐关键 */
+		border: 2px solid #ccc; /* 与输入框边框一致 */
+		border-right: none; /* 取消右边框，避免双重边框 */
+		background: #fff;
 	}
 
 	.Select-box {
@@ -55,32 +57,39 @@
 		display: none;
 		float: none;
 	}
-	/* 输入框样式：自适应宽度，不被按钮遮挡 */
+
+	/* 输入框：与按钮垂直对齐，样式统一 */
 	#kw-2{
-		/* width: 8rem; 删掉固定宽度 */
-		width: calc(100% - 4rem); /* 父容器宽度 - 按钮宽度 - 留白，自适应 */
-		height: 1.82rem;
-		border: 2px solid #ccc; /* 补充边框样式（原代码border:2不完整） */
+		width: 7.5rem !important; /* 输入框宽度，可微调 */
+		height: 1.82rem; /* 与按钮同高 */
+		border: 2px solid #ccc; /* 统一边框宽度 */
 		position: absolute;
-		left: 2rem; /* 给左侧选择框留空间 */
+		left: 2.5rem; /* 与#Select-2宽度一致，无缝衔接 */
+		top: 0; /* 垂直对齐：顶部齐平 */
 		padding-left: 10px;
-		background: rgba(255,255,255,0.9); /* 增加背景不透明度，更清晰 */
+		background: rgba(255,255,255,0.9);
+		font-size: 0.85rem; /* 输入框文字大小，适配宽度 */
+		line-height: 1.82rem; /* 文字垂直居中 */
 	}
-	/* 搜索按钮样式：固定位置不偏移 */
+
+	/* 搜索按钮：与输入框垂直对齐，样式统一 */
 	#su-2 {
 	    width: 2rem;
-	    text-align: center;
-	    line-height: 1.82rem; /* 与高度一致，文字垂直居中 */
+	    height: 1.82rem; /* 与输入框同高，垂直对齐核心 */
 	    position: absolute;
 	    background-color: blue;
-	    border-color: blue;
-	    right: 0; /* 贴右对齐，避免固定rem导致偏移 */
+	    border: 2px solid blue; /* 统一边框宽度 */
+	    right: 0;
+	    top: 0; /* 垂直对齐：顶部齐平 */
 	    border-radius: 0;
-	    height: 1.82rem;
-	    color: #fff; /* 补充文字颜色，避免看不见 */
+	    color: #fff;
+	    font-size: 0.85rem; /* 按钮文字大小，适配宽度 */
+	    line-height: 1.82rem; /* 文字垂直居中，取消原line-height:0 */
+	    text-align: center;
 	}
+
 	#su-2:hover{
-		background-color: #2d78f4; /* hover时稍深，有交互感 */
+		background-color: #2d78f4;
 	}
 
 	#su-2:active{
@@ -88,34 +97,34 @@
 		box-shadow: none;	
 	}
 	
-	/* content下的所有div宽度：继承父容器，不溢出 */
 	.content div{
 		width: 100%;
 	}
-	/* 每个选择框的宽度：自适应，避免换行 */
+
 	.content li{
-		width: 31%; /* 3个一排，自动适配宽度 */
-		margin: 0.15rem; /* 增加间距，不拥挤 */
+		width: 31%;
+		margin: 0.15rem;
 	}
-	/* 放弃content外的footer */
+
+	/* 底部版权：缩小文字，适配移动端 */
 	.footer{  
 		display: none;
 	}
-	/* 移动端footer：固定在底部，不被内容覆盖 */
+
 	.footer1{
 		display: block;
 		text-align: center;
-		position: fixed; /* 固定在底部 */
-		bottom: 0.5rem; /* 距离底部留白 */
+		position: fixed;
+		bottom: 0.5rem;
 		left: 50%;
-		transform: translateX(-50%); /* 水平居中 */
+		transform: translateX(-50%);
 		color: white;
-		font-size: 0.8rem; /* 适配移动端字体 */
+		font-size: 0.7rem !important; /* 版权文字缩小（关键），可微调 */
+		line-height: 1.2; /* 文字行高正常，不显得拥挤 */
 		width: 100%;
-		padding: 0.3rem 0;
+		padding: 0.2rem 0; /* 减少上下内边距，不占空间 */
 	}
 
-	/* 清除移动端默认样式 */
 	input[type="button"], input[type="submit"], input[type="reset"] {
 		-webkit-appearance: none;
 	}
