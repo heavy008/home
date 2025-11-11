@@ -2,7 +2,7 @@
 	*{
 		margin:0;
 		padding: 0;
-		box-sizing: border-box;
+		box-sizing: border-box; /* 必须保留，避免边框导致宽度溢出 */
 	}
 
 	html,body{
@@ -25,26 +25,30 @@
   		padding: 0 0.5rem;
 	}
 
-	/* 搜索框整体：固定宽度，居中 */
+	/* 搜索框整体：固定宽度，居中，内部元素绝对定位不溢出 */
 	.baidu{
 		position: relative;
-		width: 13rem !important; /* 搜索框整体宽度，可微调 */
-		height: 2.6rem;
+		width: 13rem !important; /* 整体宽度，可微调 */
+		height: 1.82rem; /* 与内部元素同高，避免多余空间 */
 	}
 
 	.baidu-2{
-		height: 2.6rem;
+		height: 100%; /* 继承父容器高度 */
 	}
 
-	/* 选择框：固定宽度，与输入框无缝衔接 */
+	/* 百度选择框：左侧第一个，与输入框无缝衔接 */
 	#Select-2{
 		position: absolute;
 		left: 0;
-		width: 2.5rem;
-		height: 1.82rem; /* 与输入框、按钮同高，垂直对齐关键 */
-		border: 2px solid #ccc; /* 与输入框边框一致 */
-		border-right: none; /* 取消右边框，避免双重边框 */
-		background: #fff;
+		top: 0; /* 顶部齐平 */
+		width: 2.5rem; /* 固定宽度 */
+		height: 100%; /* 与父容器同高 */
+		border: 2px solid #ccc;
+		border-right: none !important; /* 取消右边框，与输入框无缝连 */
+		background: #fff; /* 白色背景，和输入框一致 */
+		font-size: 0.85rem;
+		text-align: center;
+		line-height: calc(1.82rem - 4px); /* 减去边框高度，文字居中 */
 	}
 
 	.Select-box {
@@ -58,42 +62,50 @@
 		float: none;
 	}
 
-	/* 输入框：与按钮垂直对齐，样式统一 */
+	/* 输入框：中间，左右无缝衔接选择框和按钮 */
 	#kw-2{
-		width: 7.5rem !important; /* 输入框宽度，可微调 */
-		height: 1.82rem; /* 与按钮同高 */
-		border: 2px solid #ccc; /* 统一边框宽度 */
+		width: calc(100% - 4.5rem) !important; /* 总宽度 - 选择框宽度 - 按钮宽度 */
+		height: 100%; /* 与父容器同高 */
 		position: absolute;
-		left: 2.5rem; /* 与#Select-2宽度一致，无缝衔接 */
-		top: 0; /* 垂直对齐：顶部齐平 */
+		left: 2.5rem; /* 与选择框宽度一致，无缝衔接 */
+		top: 0; /* 顶部齐平 */
 		padding-left: 10px;
 		background: rgba(255,255,255,0.9);
-		font-size: 0.85rem; /* 输入框文字大小，适配宽度 */
-		line-height: 1.82rem; /* 文字垂直居中 */
+		font-size: 0.85rem;
+		line-height: calc(1.82rem - 4px); /* 文字垂直居中 */
+		border: 2px solid #ccc; /* 上下边框保留，左右边框取消 */
+		border-left: none !important;
+		border-right: none !important;
+		outline: none; /* 去掉聚焦时的默认边框 */
 	}
 
-	/* 搜索按钮：与输入框垂直对齐，样式统一 */
+	/* 搜索按钮：右侧，与输入框无缝衔接，纯深蓝色 */
 	#su-2 {
-	    width: 2rem;
-	    height: 1.82rem; /* 与输入框同高，垂直对齐核心 */
+	    width: 2rem; /* 固定宽度 */
+	    height: 100%; /* 与父容器同高 */
 	    position: absolute;
-	    background-color: blue;
-	    border: 2px solid blue; /* 统一边框宽度 */
 	    right: 0;
-	    top: 0; /* 垂直对齐：顶部齐平 */
+	    top: 0; /* 顶部齐平 */
+	    background-color: #3385ff !important; /* 百度经典深蓝色，固定不变 */
+	    border: 2px solid #3385ff !important; /* 边框与背景同色 */
+	    border-left: none !important; /* 取消左边框，与输入框无缝连 */
 	    border-radius: 0;
-	    color: #fff;
-	    font-size: 0.85rem; /* 按钮文字大小，适配宽度 */
-	    line-height: 1.82rem; /* 文字垂直居中，取消原line-height:0 */
+	    color: #fff !important;
+	    font-size: 0.85rem;
+	    line-height: calc(1.82rem - 4px); /* 文字垂直居中 */
 	    text-align: center;
+	    cursor: pointer;
 	}
 
+	/* 按钮hover/active保持深蓝色，只变深浅 */
 	#su-2:hover{
-		background-color: #2d78f4;
+		background-color: #2d78f4 !important;
+		border-color: #2d78f4 !important;
 	}
 
 	#su-2:active{
-		background-color: #1a68e0;
+		background-color: #1a68e0 !important;
+		border-color: #1a68e0 !important;
 		box-shadow: none;	
 	}
 	
@@ -106,7 +118,7 @@
 		margin: 0.15rem;
 	}
 
-	/* 底部版权：缩小文字，适配移动端 */
+	/* 底部版权：保持小字体，不占空间 */
 	.footer{  
 		display: none;
 	}
@@ -119,12 +131,13 @@
 		left: 50%;
 		transform: translateX(-50%);
 		color: white;
-		font-size: 0.7rem !important; /* 版权文字缩小（关键），可微调 */
-		line-height: 1.2; /* 文字行高正常，不显得拥挤 */
+		font-size: 0.7rem !important;
+		line-height: 1.2;
 		width: 100%;
-		padding: 0.2rem 0; /* 减少上下内边距，不占空间 */
+		padding: 0.2rem 0;
 	}
 
+	/* 清除移动端默认样式，避免按钮变形 */
 	input[type="button"], input[type="submit"], input[type="reset"] {
 		-webkit-appearance: none;
 	}
