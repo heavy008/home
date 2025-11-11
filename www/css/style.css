@@ -292,15 +292,17 @@ body {
 }
 
 .footer {  
-	color: #ffffff;
+    color: #ffffff;
     font-size: 12px;
     text-align: center;
-    position: absolute;
-    bottom: 2%;
+    /* 关键修改：从 absolute 改成 fixed，固定在浏览器底部 */
+    position: fixed;
+    bottom: 10px; /* 距离底部的距离，可按需调整 */
     left: 50%;
     transform: translateX(-50%);
+    z-index: 9999; /* 层级拉到最高，确保不被任何内容覆盖 */
+    padding: 0 10px; /* 左右加一点点内边距，避免文字贴边 */
 }
-
 .footer1{
 	display: none;
 }
