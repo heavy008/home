@@ -1,4 +1,4 @@
-/* 移动端样式（你之前调好的，完全保留不变） */
+/* 移动端样式（完全保留你之前调好的，无任何修改） */
 @media screen and (max-width:768px) {
 	*{
 		margin:0;padding: 0;
@@ -100,61 +100,46 @@
 	
 }
 
-/* 新增：平板/桌面端样式（min-width:769px，修复对齐和尺寸问题） */
-@media screen and (min-width:769px) {
-	/* 1. 搜索容器用flex布局，让子元素横向贴合，无间距 */
+/* 新增：仅平板小屏区间（769px-1024px）最小化微调，不影响电脑大屏（>1024px） */
+@media screen and (min-width:769px) and (max-width:1024px) {
+	/* 1. 保持搜索框容器定位不变，仅统一内部元素尺寸 */
 	.baidu {
-		display: flex;
-		align-items: center; /* 子元素垂直居中 */
-		justify-content: center; /* 整体水平居中 */
-		width: auto; /* 取消固定宽度，自适应内容 */
-		height: auto; /* 取消固定高度 */
-		position: relative;
-		left: 0;
-		transform: none; /* 取消移动端的平移 */
+		width: 22rem; /* 平板端适当放大搜索框宽度 */
+		height: 3rem; /* 适配统一高度 */
 	}
 
-	/* 2. 下拉框：与输入框/按钮垂直对齐，统一高度 */
+	/* 2. 下拉框：与输入框/按钮统一高度，消除间距 */
 	#Select-2 {
-		position: static; /* 取消绝对定位，回归flex流 */
-		height: 38px; /* 与输入框、按钮统一高度 */
-		border: 2px solid #ddd; /* 统一边框样式 */
-		border-right: none; /* 去掉右侧边框，与输入框贴合 */
-		padding: 0 8px;
+		height: 2.2rem; /* 与输入框、按钮统一高度 */
+		border: 2px solid #ddd; /* 补充边框颜色，避免透明 */
+		top: calc(50% - 1.1rem); /* 垂直居中（高度的一半） */
 	}
 
-	/* 3. 输入框：与按钮尺寸一致，紧密连接 */
+	/* 3. 输入框：与按钮尺寸一致，紧贴下拉框 */
 	#kw-2 {
-		position: static; /* 取消绝对定位，回归flex流 */
-		width: 300px; /* 平板端输入框宽度（可按需调整） */
-		height: 38px; /* 与按钮统一高度 */
+		width: 12rem; /* 平板端适当放大输入框宽度 */
+		height: 2.2rem; /* 统一高度 */
 		border: 2px solid #ddd; /* 统一边框 */
+		left: 5rem; /* 紧贴下拉框，消除间距 */
+		top: calc(50% - 1.1rem); /* 垂直居中 */
 		border-left: none; /* 去掉左侧边框，与下拉框贴合 */
-		border-right: none; /* 去掉右侧边框，与按钮贴合 */
-		padding: 0 10px;
-		margin: 0; /* 取消默认间距 */
 	}
 
-	/* 4. 搜索按钮：与输入框尺寸一致，紧密连接 */
+	/* 4. 搜索按钮：与输入框尺寸一致，紧贴输入框 */
 	#su-2 {
-		position: static; /* 取消绝对定位，回归flex流 */
-		width: 100px; /* 平板端按钮宽度（可按需调整） */
-		height: 38px; /* 与输入框统一高度 */
-		line-height: 38px; /* 文字垂直居中 */
-		border: 2px solid blue; /* 统一边框 */
-		border-radius: 0;
-		right: 0;
-		margin: 0; /* 取消默认间距 */
+		height: 2.2rem; /* 统一高度 */
+		width: 3rem; /* 平板端适当放大按钮宽度 */
+		right: 2rem; /* 紧贴输入框，消除间距 */
+		top: calc(50% - 1.1rem); /* 垂直居中 */
+		line-height: 2.2rem; /* 文字垂直居中 */
 		color: white; /* 文字变白，避免看不见 */
+		border-left: none; /* 去掉左侧边框，与输入框贴合 */
 	}
 
-	/* 5. 内容区整体居中（平板端适配） */
+	/* 5. 内容区保持居中，适配平板宽度 */
 	.content {
-		width: 100%; /* 取消固定宽度，自适应屏幕 */
-		position: absolute;
-		top: 26%;
-		left: 50%;
-		transform: translateX(calc(-50% + 3px)); /* 保持和移动端一致的右移3px */
-		margin-top: -40px; /* 保持和移动端一致的上移40px */
+		width: 22rem; /* 与搜索框宽度一致 */
 	}
 }
+
+/* 电脑大屏（>1024px）：完全不做任何修改，沿用你原有样式/浏览器默认样式 */
