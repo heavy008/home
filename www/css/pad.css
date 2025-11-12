@@ -1,0 +1,35 @@
+/* 平板端强制布局修复 769–1280 */
+@media screen and (min-width: 769px) and (max-width: 1280px) {
+  .baidu-2 form {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 860px !important;
+    width: 90% !important;
+    height: 48px !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .Select-box-2 {
+    float: none !important;
+    flex: 0 0 80px !important;
+  }
+
+  .in5 {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    position: relative !important;
+  }
+
+  #kw-2 {
+    width: 100% !important;
+    height: 48px !important;
+  }
+
+  #su-2 {
+    flex: 0 0 80px !important;
+    width: 80px !important;
+    height: 48px !important;
+  }
+}
