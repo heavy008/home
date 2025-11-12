@@ -1,3 +1,4 @@
+/* 移动端样式（你之前调好的，完全保留不变） */
 @media screen and (max-width:768px) {
 	*{
 		margin:0;padding: 0;
@@ -7,21 +8,18 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 调整transform实现右移3px（核心修改）*/
 	.content{
 		width: 15rem;
 		display: flex;
   		flex-direction: column;
  		justify-content: space-around;
   		align-items: center;
-  		/*height: 46rem;*/
   		position: absolute;
   		top:26%;
-  		left: 50%; /* 水平居中第一步 */
-  		transform: translateX(calc(-50% + 3px)); /* 最终：-50%保持居中，+3px实现右移3像素（1px+新增2px） */
-  		margin-top: -40px; /* 整体上移40px（保留之前设置） */
+  		left: 50%;
+  		transform: translateX(calc(-50% + 3px));
+  		margin-top: -40px;
 	}
-	/*搜索框总体样式（完全保留最初代码，未改动）*/
 	.baidu{
 		position: relative;
 		width: 16rem;
@@ -34,7 +32,6 @@
 		height: 2.6rem;
 	}
 
-/*取消多级搜索，只保留百度（完全保留最初代码）*/
 	#Select-2{
 		position: absolute;
 		left: 0;
@@ -50,7 +47,6 @@
 		display: none;
 		float: none;
 	}
-	/*输入框样式（完全保留最初代码，未改动）*/
 	#kw-2{
 		width: 8rem;
 		height: 1.82rem;
@@ -58,7 +54,6 @@
 		position: absolute;
 		padding-left: 10px;
 	}
-	/*搜索框样式（完全保留最初代码，未改动）*/
 	#su-2 {
 	    width: 2rem;
 	    text-align: center;
@@ -79,19 +74,15 @@
 		box-shadow: none;	
 	}
 	
-	/*content下的所有div宽度（保留最初）*/
 	.content div{
 		width: 100%;
 	}
-	/*每个选择框的宽度（保留最初）*/
 	.content li{
 		width: 4.69rem;
 	}
-	/*放弃content外的footer（保留最初）*/
 	.footer{  
 		display: none;
 	}
-	/*移动端使用的footer（保留最初）*/
 	.footer1{
 		display: block;
 		text-align: center;
@@ -107,4 +98,63 @@
 
 	textarea {  -webkit-appearance: none;}  
 	
+}
+
+/* 新增：平板/桌面端样式（min-width:769px，修复对齐和尺寸问题） */
+@media screen and (min-width:769px) {
+	/* 1. 搜索容器用flex布局，让子元素横向贴合，无间距 */
+	.baidu {
+		display: flex;
+		align-items: center; /* 子元素垂直居中 */
+		justify-content: center; /* 整体水平居中 */
+		width: auto; /* 取消固定宽度，自适应内容 */
+		height: auto; /* 取消固定高度 */
+		position: relative;
+		left: 0;
+		transform: none; /* 取消移动端的平移 */
+	}
+
+	/* 2. 下拉框：与输入框/按钮垂直对齐，统一高度 */
+	#Select-2 {
+		position: static; /* 取消绝对定位，回归flex流 */
+		height: 38px; /* 与输入框、按钮统一高度 */
+		border: 2px solid #ddd; /* 统一边框样式 */
+		border-right: none; /* 去掉右侧边框，与输入框贴合 */
+		padding: 0 8px;
+	}
+
+	/* 3. 输入框：与按钮尺寸一致，紧密连接 */
+	#kw-2 {
+		position: static; /* 取消绝对定位，回归flex流 */
+		width: 300px; /* 平板端输入框宽度（可按需调整） */
+		height: 38px; /* 与按钮统一高度 */
+		border: 2px solid #ddd; /* 统一边框 */
+		border-left: none; /* 去掉左侧边框，与下拉框贴合 */
+		border-right: none; /* 去掉右侧边框，与按钮贴合 */
+		padding: 0 10px;
+		margin: 0; /* 取消默认间距 */
+	}
+
+	/* 4. 搜索按钮：与输入框尺寸一致，紧密连接 */
+	#su-2 {
+		position: static; /* 取消绝对定位，回归flex流 */
+		width: 100px; /* 平板端按钮宽度（可按需调整） */
+		height: 38px; /* 与输入框统一高度 */
+		line-height: 38px; /* 文字垂直居中 */
+		border: 2px solid blue; /* 统一边框 */
+		border-radius: 0;
+		right: 0;
+		margin: 0; /* 取消默认间距 */
+		color: white; /* 文字变白，避免看不见 */
+	}
+
+	/* 5. 内容区整体居中（平板端适配） */
+	.content {
+		width: 100%; /* 取消固定宽度，自适应屏幕 */
+		position: absolute;
+		top: 26%;
+		left: 50%;
+		transform: translateX(calc(-50% + 3px)); /* 保持和移动端一致的右移3px */
+		margin-top: -40px; /* 保持和移动端一致的上移40px */
+	}
 }
