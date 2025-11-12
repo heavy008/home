@@ -1,4 +1,4 @@
-/* 移动端样式（完全保留你之前调好的，无任何修改） */
+/* 移动端样式（完全保留你调好的，一字不改） */
 @media screen and (max-width:768px) {
 	*{
 		margin:0;padding: 0;
@@ -100,46 +100,62 @@
 	
 }
 
-/* 新增：仅平板小屏区间（769px-1024px）最小化微调，不影响电脑大屏（>1024px） */
+/* 平板端（769-1024px）：强制统一尺寸+无缝连接，无任何多余改动 */
 @media screen and (min-width:769px) and (max-width:1024px) {
-	/* 1. 保持搜索框容器定位不变，仅统一内部元素尺寸 */
 	.baidu {
-		width: 22rem; /* 平板端适当放大搜索框宽度 */
-		height: 3rem; /* 适配统一高度 */
+		width: 450px !important; /* 强制固定宽度，避免自适应错乱 */
+		height: 36px !important; /* 强制统一容器高度 */
 	}
 
-	/* 2. 下拉框：与输入框/按钮统一高度，消除间距 */
+	/* 下拉框：强制尺寸+紧贴左侧 */
 	#Select-2 {
-		height: 2.2rem; /* 与输入框、按钮统一高度 */
-		border: 2px solid #ddd; /* 补充边框颜色，避免透明 */
-		top: calc(50% - 1.1rem); /* 垂直居中（高度的一半） */
+		position: absolute !important;
+		left: 0 !important;
+		top: 0 !important; /* 强制置顶，和输入框/按钮同高度起点 */
+		width: 100px !important; /* 固定宽度 */
+		height: 36px !important; /* 强制统一高度 */
+		border: 2px solid #ddd !important;
+		border-right: none !important; /* 去掉右边框，和输入框贴合 */
+		margin: 0 !important;
+		padding: 0 8px !important;
 	}
 
-	/* 3. 输入框：与按钮尺寸一致，紧贴下拉框 */
+	/* 输入框：强制尺寸+紧贴下拉框 */
 	#kw-2 {
-		width: 12rem; /* 平板端适当放大输入框宽度 */
-		height: 2.2rem; /* 统一高度 */
-		border: 2px solid #ddd; /* 统一边框 */
-		left: 5rem; /* 紧贴下拉框，消除间距 */
-		top: calc(50% - 1.1rem); /* 垂直居中 */
-		border-left: none; /* 去掉左侧边框，与下拉框贴合 */
+		position: absolute !important;
+		left: 100px !important; /* 刚好是下拉框宽度，无缝衔接 */
+		top: 0 !important; /* 强制置顶，和下拉框同高度起点 */
+		width: 250px !important; /* 固定宽度 */
+		height: 36px !important; /* 强制统一高度 */
+		border: 2px solid #ddd !important;
+		border-left: none !important; /* 去掉左边框，和下拉框贴合 */
+		border-right: none !important; /* 去掉右边框，和按钮贴合 */
+		margin: 0 !important;
+		padding: 0 10px !important;
 	}
 
-	/* 4. 搜索按钮：与输入框尺寸一致，紧贴输入框 */
+	/* 搜索按钮：强制尺寸+紧贴输入框 */
 	#su-2 {
-		height: 2.2rem; /* 统一高度 */
-		width: 3rem; /* 平板端适当放大按钮宽度 */
-		right: 2rem; /* 紧贴输入框，消除间距 */
-		top: calc(50% - 1.1rem); /* 垂直居中 */
-		line-height: 2.2rem; /* 文字垂直居中 */
-		color: white; /* 文字变白，避免看不见 */
-		border-left: none; /* 去掉左侧边框，与输入框贴合 */
+		position: absolute !important;
+		left: 350px !important; /* 下拉框100px + 输入框250px = 无缝衔接 */
+		top: 0 !important; /* 强制置顶，和输入框同高度起点 */
+		width: 100px !important; /* 固定宽度 */
+		height: 36px !important; /* 强制统一高度 */
+		border: 2px solid blue !important;
+		border-left: none !important; /* 去掉左边框，和输入框贴合 */
+		right: auto !important; /* 取消原有right，用left精准定位 */
+		line-height: 36px !important; /* 文字垂直居中 */
+		color: white !important; /* 文字必显 */
+		margin: 0 !important;
 	}
 
-	/* 5. 内容区保持居中，适配平板宽度 */
+	/* 内容区强制居中 */
 	.content {
-		width: 22rem; /* 与搜索框宽度一致 */
+		width: 450px !important; /* 和搜索框宽度一致 */
+		left: 50% !important;
+		transform: translateX(calc(-50% + 3px)) !important; /* 保持右移3px */
+		margin-top: -40px !important; /* 保持上移40px */
 	}
 }
 
-/* 电脑大屏（>1024px）：完全不做任何修改，沿用你原有样式/浏览器默认样式 */
+/* 电脑大屏（>1024px）：完全不写任何样式，100%保留你原有布局 */
