@@ -1,206 +1,110 @@
-/* 全局基础样式（若你最初有全局样式可补充，此处按你原始逻辑保留重置） */
-*{
-    margin: 0;
-    padding: 0;
-}
-html,body{
-    height: 100%;
-    width: 100%;
-}
-
-/* 1. 手机端（max-width:768px）：仅加居中+上移+右移，其他完全保留最初样式 */
 @media screen and (max-width:768px) {
-    .content{
-        width: 15rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        position: absolute;
-        top: 26%;
-        /* 核心修改：水平居中+右移3px+上移40px */
-        left: 50%;
-        transform: translateX(calc(-50% + 3px));
-        margin-top: -40px;
-    }
+	*{
+		margin:0;padding: 0;
+	}
 
-    .baidu{
-        position: relative;
-        width: 16rem;
-        height: 2.6rem;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+	html,body{
+		height: 100%;
+		width: 100%;
+	}
+	/*内容样式，使用flex布局 - 调整transform实现右移3px（核心修改）*/
+	.content{
+		width: 15rem;
+		display: flex;
+  		flex-direction: column;
+ 		justify-content: space-around;
+  		align-items: center;
+  		/*height: 46rem;*/
+  		position: absolute;
+  		top:26%;
+  		left: 50%; /* 水平居中第一步 */
+  		transform: translateX(calc(-50% + 3px)); /* 最终：-50%保持居中，+3px实现右移3像素（1px+新增2px） */
+  		margin-top: -40px; /* 整体上移40px（保留之前设置） */
+	}
+	/*搜索框总体样式（完全保留最初代码，未改动）*/
+	.baidu{
+		position: relative;
+		width: 16rem;
+		height: 2.6rem;
+		left: 50%;
+		transform: translateX(-50%);
+	}
 
-    .baidu-2{
-        height: 2.6rem;
-    }
+	.baidu-2{
+		height: 2.6rem;
+	}
 
-    #Select-2{
-        position: absolute;
-        left: 0;
-    }
+/*取消多级搜索，只保留百度（完全保留最初代码）*/
+	#Select-2{
+		position: absolute;
+		left: 0;
+	}
 
-    .Select-box {
-        display: none;
-        float: none;
-    }
+	.Select-box {
+		display: none;
+		float: none;
+	}
 
-    .Select-box li{
-        background-color: yellow;
-        display: none;
-        float: none;
-    }
+	.Select-box li{
+		background-color: yellow;
+		display: none;
+		float: none;
+	}
+	/*输入框样式（完全保留最初代码，未改动）*/
+	#kw-2{
+		width: 8rem;
+		height: 1.82rem;
+		border:2;
+		position: absolute;
+		padding-left: 10px;
+	}
+	/*搜索框样式（完全保留最初代码，未改动）*/
+	#su-2 {
+	    width: 2rem;
+	    text-align: center;
+	    line-height: 0rem;
+	    position: absolute;
+	    background-color: blue;
+	    border-color: blue;
+	    right: 1rem;
+	    border-radius: 0;
+	    height: 1.82rem;
+	}
+	#su-2:hover{
+		background-color: blue;
+	}
 
-    #kw-2{
-        width: 8rem;
-        height: 1.82rem;
-        border: 2;
-        position: absolute;
-        padding-left: 10px;
-    }
+	#su-2:avtive{
+		background-color: blue;
+		box-shadow: none;	
+	}
+	
+	/*content下的所有div宽度（保留最初）*/
+	.content div{
+		width: 100%;
+	}
+	/*每个选择框的宽度（保留最初）*/
+	.content li{
+		width: 4.69rem;
+	}
+	/*放弃content外的footer（保留最初）*/
+	.footer{  
+		display: none;
+	}
+	/*移动端使用的footer（保留最初）*/
+	.footer1{
+		display: block;
+		text-align: center;
+		position: relative;
+		padding-top: 10px;
+		bottom: 0;
+		color:white;
+	}
 
-    #su-2 {
-        width: 2rem;
-        text-align: center;
-        line-height: 0rem;
-        position: absolute;
-        background-color: blue;
-        border-color: blue;
-        right: 1rem;
-        border-radius: 0;
-        height: 1.82rem;
-    }
+	input[type="button"], input[type="submit"], input[type="reset"] {
+	-webkit-appearance: none;
+	}
 
-    #su-2:hover{
-        background-color: blue;
-    }
-
-    #su-2:avtive{
-        background-color: blue;
-        box-shadow: none;
-    }
-
-    .content div{
-        width: 100%;
-    }
-
-    .content li{
-        width: 4.69rem;
-    }
-
-    .footer{
-        display: none;
-    }
-
-    .footer1{
-        display: block;
-        text-align: center;
-        position: relative;
-        padding-top: 10px;
-        bottom: 0;
-        color: white;
-    }
-
-    input[type="button"], input[type="submit"], input[type="reset"] {
-        -webkit-appearance: none;
-    }
-
-    textarea {
-        -webkit-appearance: none;
-    }
-}
-
-/* 2. 平板端（769px-1024px）：仅解决「尺寸不一致+不连接」，不改变定位逻辑 */
-@media screen and (min-width:769px) and (max-width:1024px) {
-    .content{
-        width: 450px;
-        position: absolute;
-        top: 26%;
-        left: 50%;
-        transform: translateX(calc(-50% + 3px)); /* 保持和手机端一致的右移 */
-        margin-top: -40px; /* 保持和手机端一致的上移 */
-    }
-
-    .baidu{
-        position: relative;
-        width: 450px;
-        height: 38px; /* 统一容器高度 */
-        left: 0;
-        transform: none;
-    }
-
-    /* 下拉框：统一尺寸+紧贴左侧 */
-    #Select-2{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 90px;
-        height: 38px; /* 和输入框/按钮同高 */
-        border: 2px solid #ddd;
-        border-right: none; /* 消除右侧边框间距 */
-        padding: 0 8px;
-    }
-
-    /* 输入框：统一尺寸+紧贴下拉框 */
-    #kw-2{
-        position: absolute;
-        left: 90px; /* 刚好对齐下拉框右侧，无缝衔接 */
-        top: 0;
-        width: 270px;
-        height: 38px; /* 统一高度 */
-        border: 2px solid #ddd;
-        border-left: none; /* 消除左侧边框间距 */
-        border-right: none; /* 消除右侧边框间距 */
-        padding: 0 10px;
-        margin: 0;
-    }
-
-    /* 搜索按钮：统一尺寸+紧贴输入框 */
-    #su-2{
-        position: absolute;
-        left: 360px; /* 下拉框90px + 输入框270px = 无缝衔接 */
-        top: 0;
-        width: 90px;
-        height: 38px; /* 统一高度 */
-        line-height: 38px; /* 文字垂直居中 */
-        color: white; /* 避免文字看不见 */
-        border: 2px solid blue;
-        border-left: none; /* 消除左侧边框间距 */
-        right: auto; /* 取消原有right，精准定位 */
-    }
-}
-
-/* 3. 电脑端（>1024px）：完全回归最初状态，不做任何修改 */
-@media screen and (min-width:1025px) {
-    /* 此处保留你最初的电脑端样式（若有），若无则留空，完全沿用浏览器默认+全局样式 */
-    .content{
-        /* 按你最初的电脑端布局设置，示例： */
-        width: auto;
-        position: absolute;
-        top: 26%;
-        left: 50%;
-        transform: translateX(-50%);
-        /* 其他你最初的电脑端样式... */
-    }
-
-    /* 搜索框保持你最初的电脑端逻辑，不做任何调整 */
-    .baidu{
-        position: relative;
-        width: auto;
-        height: auto;
-        left: 0;
-        transform: none;
-    }
-
-    #Select-2, #kw-2, #su-2 {
-        /* 完全保留你最初的电脑端尺寸、定位，示例： */
-        position: static;
-        width: auto;
-        height: auto;
-        border: initial;
-        margin: initial;
-        padding: initial;
-        /* 其他你最初的样式... */
-    }
+	textarea {  -webkit-appearance: none;}  
+	
 }
