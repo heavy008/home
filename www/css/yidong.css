@@ -1,4 +1,6 @@
 @media screen and (max-width:768px) {
+
+	/* 全局重置 */
 	*{
 		margin:0;padding: 0;
 	}
@@ -7,91 +9,104 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式，使用flex布局 - 调整transform实现右移3px（核心修改）*/
+
+	/* 内容 - 保持你的原设计 */
 	.content{
 		width: 15rem;
 		display: flex;
-  		flex-direction: column;
- 		justify-content: space-around;
-  		align-items: center;
-  		/*height: 46rem;*/
-  		position: absolute;
-  		top:26%;
-  		left: 50%; /* 水平居中第一步 */
-  		transform: translateX(calc(-50% + 3px)); /* 最终：-50%保持居中，+3px实现右移3像素（1px+新增2px） */
-  		margin-top: -40px; /* 整体上移40px（保留之前设置） */
-	}
-	/*搜索框总体样式（完全保留最初代码，未改动）*/
-	.baidu{
-		position: relative;
-		width: 16rem;
-		height: 2.6rem;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		position: absolute;
+		top: 26%;
 		left: 50%;
-		transform: translateX(-50%);
+		transform: translateX(calc(-50% + 3px));
+		margin-top: -40px;
+	}
+
+	/* --------------------------
+	   ⚡ 重点：重新设计移动端搜索栏
+	   -------------------------- */
+	.baidu{
+		width: 100%;
+		left: 0;
+		transform: none;
+		position: relative;
+		margin-bottom: 14px;
 	}
 
 	.baidu-2{
-		height: 2.6rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 	}
 
-/*取消多级搜索，只保留百度（完全保留最初代码）*/
-	#Select-2{
-		position: absolute;
-		left: 0;
+	/* 搜索引擎按钮（只保留百度） */
+	.Select-box-2{
+		display: block !important;
+		width: 100% !important;
+		text-align: center;
+		background: #ffffff;
+		border-radius: 6px;
+		padding: 10px 0;
+		font-size: 20px;
+		font-weight: 600;
+		color: #0066ff;
+		box-sizing: border-box;
 	}
 
-	.Select-box {
-		display: none;
-		float: none;
+	/* 输入框 */
+	.in5{
+		width: 100%;
+		position: relative;
 	}
 
-	.Select-box li{
-		background-color: yellow;
-		display: none;
-		float: none;
-	}
-	/*输入框样式（完全保留最初代码，未改动）*/
 	#kw-2{
-		width: 8rem;
-		height: 1.82rem;
-		border:2;
-		position: absolute;
-		padding-left: 10px;
-	}
-	/*搜索框样式（完全保留最初代码，未改动）*/
-	#su-2 {
-	    width: 2rem;
-	    text-align: center;
-	    line-height: 0rem;
-	    position: absolute;
-	    background-color: blue;
-	    border-color: blue;
-	    right: 1rem;
-	    border-radius: 0;
-	    height: 1.82rem;
-	}
-	#su-2:hover{
-		background-color: blue;
+		width: 100% !important;
+		height: 48px !important;
+		border-radius: 6px;
+		font-size: 18px;
+		padding: 0 12px !important;
+		background: #ffffff !important;
+		box-sizing: border-box;
+		border: none;
 	}
 
-	#su-2:avtive{
-		background-color: blue;
-		box-shadow: none;	
+	/* 搜索按钮 */
+	#su-2{
+		width: 100% !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		background: blue !important;
+		color: white;
+		font-size: 20px;
+		border-radius: 6px;
+		border: none !important;
+		text-align: center;
 	}
-	
-	/*content下的所有div宽度（保留最初）*/
+
+	#su-2:hover,
+	#su-2:active{
+		background: blue !important;
+	}
+
+	/* 内容区宽度继承 */
 	.content div{
 		width: 100%;
 	}
-	/*每个选择框的宽度（保留最初）*/
+
+	/* 列表模块宽度 */
 	.content li{
 		width: 4.69rem;
 	}
-	/*放弃content外的footer（保留最初）*/
+
+	/* PC 页脚隐藏 */
 	.footer{  
 		display: none;
 	}
-	/*移动端使用的footer（保留最初）*/
+
+	/* 移动端 footer 显示 */
 	.footer1{
 		display: block;
 		text-align: center;
@@ -101,10 +116,14 @@
 		color:white;
 	}
 
-	input[type="button"], input[type="submit"], input[type="reset"] {
-	-webkit-appearance: none;
+	input[type="button"],
+	input[type="submit"],
+	input[type="reset"] {
+		-webkit-appearance: none;
 	}
 
-	textarea {  -webkit-appearance: none;}  
-	
+	textarea {
+		-webkit-appearance: none;
+	}
+
 }
