@@ -13,7 +13,7 @@
 		max-width: 320px;
 		display: flex;
   		flex-direction: column;
- 		justify-content: center; /* 改为center，避免space-around打乱常用网站布局 */
+ 		justify-content: center; /* 避免space-around打乱常用网站布局 */
   		align-items: center;
   		gap: 20px; /* 搜索区域和常用网站之间留间距 */
   		position: absolute;
@@ -23,14 +23,8 @@
   		margin-top: -40px;
 	}
 
-	/* 单独给搜索区域加容器，避免样式污染常用网站 */
-	.search-area {
-		width: 100%;
-		max-width: 320px;
-	}
-
-	/* 搜索框容器：仅作用于搜索区域 */
-	.search-area .baidu{
+	/* 搜索框容器：仅作用于搜索区域，不影响其他div */
+	.content .baidu{
 		position: relative;
 		width: 100%;
 		max-width: 320px;
@@ -39,12 +33,12 @@
 		transform: translateX(-50%);
 	}
 
-	.search-area .baidu-2{
+	.content .baidu-2{
 		height: 40px;
 	}
 
-	/* 百度下拉框：仅作用于搜索区域 */
-	.search-area #Select-2{
+	/* 百度下拉框：仅作用于baidu容器内的元素 */
+	.content .baidu #Select-2{
 		position: absolute;
 		left: 0;
 		top: 50%;
@@ -55,32 +49,32 @@
 		border-radius: 4px 0 0 4px;
 	}
 
-	.search-area .Select-box {
+	/* 下拉框选项：仅作用于baidu容器内的li */
+	.content .baidu .Select-box {
 		display: none;
 		float: none;
 	}
-
-	.search-area .Select-box li{
+	.content .baidu .Select-box li{
 		background-color: yellow;
 		display: none;
 		float: none;
-		width: 4.69rem; /* 仅搜索区域的li用这个宽度 */
+		width: 4.69rem;
 	}
 
-	/* 输入框：仅作用于搜索区域 */
-	.search-area #kw-2{
+	/* 输入框：仅作用于baidu容器内的#kw-2 */
+	.content .baidu #kw-2{
 		width: 160px;
 		height: 34px;
 		border: 2px solid #ddd;
 		position: absolute;
-		left: 85px;
+		left: 85px; /* 与下拉框留5px间距 */
 		top: 50%;
 		transform: translateY(-50%);
 		padding-left: 10px;
 	}
 
-	/* 搜索按钮：仅作用于搜索区域 */
-	.search-area #su-2 {
+	/* 搜索按钮：仅作用于baidu容器内的#su-2 */
+	.content .baidu #su-2 {
 	    width: 80px;
 	    text-align: center;
 	    line-height: 34px;
@@ -93,7 +87,7 @@
 	    top: 50%;
 	    transform: translateY(-50%);
 	    color: white;
-	    margin-left: 5px;
+	    margin-left: 5px; /* 与输入框留5px间距 */
 	}
 	#su-2:hover{
 		background-color: blue;
@@ -104,24 +98,8 @@
 		box-shadow: none;	
 	}
 	
-	/* 取消全局.content div/li样式，避免污染常用网站 */
-	/* .content div{width: 100%;} （删除这行）*/
-	/* .content li{width: 4.69rem;} （删除这行）*/
-
-	/* 常用网站样式：恢复原有布局 */
-	.common-sites {
-		width: 100%;
-	}
-	.common-sites .site-btn {
-		width: 100%; /* 按钮占满容器宽度 */
-		height: 40px;
-		line-height: 40px;
-		background: #a07941; /* 匹配截图里的棕色 */
-		color: white;
-		border: none;
-		margin: 8px 0;
-		font-size: 16px;
-	}
+	/* 关键：删除全局的.content div/li样式！避免污染常用网站 */
+	/* 之前的 .content div{width: 100%;} 和 .content li{width: 4.69rem;} 已删除 */
 
 	.footer{  
 		display: none;
