@@ -19,7 +19,7 @@
   		position: absolute;
   		top:26%;
   		left: 50%;
-  		transform: translateX(calc(-50% + 32px));
+  		transform: translateX(calc(-50% + 30px));
   		margin-top: -40px;
 	}
 
