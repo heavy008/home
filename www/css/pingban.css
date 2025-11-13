@@ -1,0 +1,44 @@
+/* 仅在屏幕宽度 768–1024 像素之间生效 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* 让整个搜索区域在平板宽度下居中并去掉浮动 */
+  .baidu {
+    float: none;
+    margin: 16px auto;
+    width: 90%;
+  }
+  /* 搜索表单用 flex 布局，使子元素垂直居中对齐 */
+  .baidu form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 2.6rem;         /* 根据原来移动端 2.6rem 调整 */
+  }
+  /* 下拉选择框可根据需要放开或隐藏，这里保留位置 */
+  .Select-box {
+    position: relative;
+  }
+  .Select-box li {
+    height: 2.6rem;
+    line-height: 2.6rem;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+  /* 搜索输入框：占满剩余空间，统一高度和内边距 */
+  #kw-2 {
+    flex: 1 1 auto;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    box-sizing: border-box;
+  }
+  /* 搜索按钮 */
+  input#su-2 {
+    height: 2.6rem;
+    line-height: 2.6rem;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+}
