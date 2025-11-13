@@ -1,6 +1,7 @@
 @media screen and (max-width:768px) {
 	*{
 		margin:0;padding: 0;
+		box-sizing: border-box; /* 新增：避免padding撑大元素，确保宽度生效 */
 	}
 
 	html,body{
@@ -10,7 +11,7 @@
 	/* 内容容器：居中+上移40px+右移3px */
 	.content{
 		width: 90%;
-		max-width: 320px;
+		max-width: 350px; /* 适当加宽，适配更多按钮 */
 		display: flex;
   		flex-direction: column;
  		justify-content: center;
@@ -23,11 +24,11 @@
   		margin-top: -40px;
 	}
 
-	/* 搜索区域：精准隔离样式，不污染其他元素 */
+	/* 搜索区域：精准隔离，不污染其他 */
 	.content .baidu{
 		position: relative;
 		width: 100%;
-		max-width: 320px;
+		max-width: 350px;
 		height: 40px;
 		left: 50%;
 		transform: translateX(-50%);
@@ -61,11 +62,11 @@
 	}
 
 	.content .baidu #kw-2{
-		width: 160px;
+		width: 170px;
 		height: 34px;
 		border: 2px solid #ddd;
 		position: absolute;
-		left: 85px; /* 与下拉框留5px间距 */
+		left: 85px;
 		top: 50%;
 		transform: translateY(-50%);
 		padding-left: 10px;
@@ -84,7 +85,7 @@
 	    top: 50%;
 	    transform: translateY(-50%);
 	    color: white;
-	    margin-left: 5px; /* 与输入框留5px间距 */
+	    margin-left: 5px;
 	}
 
 	#su-2:hover{
@@ -96,39 +97,47 @@
 		box-shadow: none;	
 	}
 
-	/* ========== 常用网站移动端自适应（不改HTML） ========== */
-	/* 选择搜索框之后的区块（常用网站父容器）- 无需额外类 */
-	.content > div:nth-child(2) {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap; /* 自动换行，适配手机 */
-		gap: 10px; /* 按钮之间的间距 */
-		justify-content: center; /* 居中排列 */
-		padding: 10px 0;
+	/* ========== 强制常用网站移动端样式（不管HTML结构） ========== */
+	/* 1. 选中.content下所有非搜索框的区块（常用网站父容器） */
+	.content > div:not(.baidu),
+	.content > section,
+	.content > article {
+		width: 100% !important; /* 强制占满宽度 */
+		display: flex !important;
+		flex-wrap: wrap !important; /* 强制换行，解决桌面端多列问题 */
+		justify-content: center !important; /* 强制居中 */
+		margin: 10px 0 !important;
+		padding: 0 !important;
 	}
 
-	/* 常用网站按钮（适配2列布局）- 兼容按钮/普通div */
-	.content > div:nth-child(2) > button,
-	.content > div:nth-child(2) > div {
-		width: calc(50% - 5px); /* 2列均分宽度，减去间距的一半 */
-		max-width: 150px; /* 限制最大宽度，避免太宽 */
-		height: 40px;
-		line-height: 40px;
-		text-align: center;
-		background: #a07941; /* 匹配常见棕色按钮样式，可按实际调整 */
-		color: white;
-		border: none;
-		border-radius: 4px;
-		font-size: 16px;
+	/* 2. 选中常用网站内的所有按钮/链接/块级元素 */
+	.content > div:not(.baidu) > *,
+	.content > section > *,
+	.content > article > * {
+		width: 48% !important; /* 强制2列，不用复杂计算 */
+		max-width: 160px !important; /* 限制最大宽度 */
+		height: 45px !important; /* 移动端舒适高度 */
+		line-height: 45px !important; /* 文字垂直居中 */
+		text-align: center !important;
+		margin: 5px 1% !important; /* 间距，替代gap，兼容性更好 */
+		float: none !important; /* 取消桌面端浮动 */
+		background: #a07941 !important;
+		color: white !important;
+		border: none !important;
+		border-radius: 6px !important;
+		font-size: 16px !important;
 	}
 
-	/* 常用网站标题（若有）居中 */
-	.content > div:nth-child(2) > p {
-		width: 100%;
-		text-align: center;
-		color: white;
-		font-size: 18px;
-		margin-bottom: 10px;
+	/* 3. 标题单独处理（如果有标题p/h标签） */
+	.content > div:not(.baidu) > p,
+	.content > div:not(.baidu) > h3,
+	.content > section > p,
+	.content > section > h3 {
+		width: 100% !important; /* 标题占满一行 */
+		height: auto !important;
+		line-height: normal !important;
+		font-size: 18px !important;
+		margin: 10px 0 !important;
 	}
 
 	/* 底部样式 */
