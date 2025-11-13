@@ -1,6 +1,4 @@
 @media screen and (max-width:768px) {
-
-	/* 全局重置 */
 	*{
 		margin:0;padding: 0;
 	}
@@ -9,104 +7,104 @@
 		height: 100%;
 		width: 100%;
 	}
-
-	/* 内容 - 保持你的原设计 */
+	/*内容样式，使用flex布局 - 保留原有居中/上移/右移设置*/
 	.content{
 		width: 15rem;
 		display: flex;
-		flex-direction: column;
-		justify-content: space-around;
-		align-items: center;
-		position: absolute;
-		top: 26%;
-		left: 50%;
-		transform: translateX(calc(-50% + 3px));
-		margin-top: -40px;
+  		flex-direction: column;
+ 		justify-content: space-around;
+  		align-items: center;
+  		/*height: 46rem;*/
+  		position: absolute;
+  		top:26%;
+  		left: 50%;
+  		transform: translateX(calc(-50% + 3px));
+  		margin-top: -40px;
 	}
-
-	/* --------------------------
-	   ⚡ 重点：重新设计移动端搜索栏
-	   -------------------------- */
+	/*搜索框总体样式 - 保留原有尺寸，作为定位基准*/
 	.baidu{
-		width: 100%;
-		left: 0;
-		transform: none;
 		position: relative;
-		margin-bottom: 14px;
+		width: 16rem;
+		height: 2.6rem;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	.baidu-2{
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		gap: 10px;
+		height: 2.6rem;
 	}
 
-	/* 搜索引擎按钮（只保留百度） */
-	.Select-box-2{
-		display: block !important;
-		width: 100% !important;
-		text-align: center;
-		background: #ffffff;
-		border-radius: 6px;
-		padding: 10px 0;
-		font-size: 20px;
-		font-weight: 600;
-		color: #0066ff;
-		box-sizing: border-box;
+/*取消多级搜索，只保留百度 - 新增垂直居中，与输入框/按钮对齐*/
+	#Select-2{
+		position: absolute;
+		left: 0;
+		top: 50%; /* 垂直居中第一步 */
+		transform: translateY(-50%); /* 垂直居中第二步，随容器高度自适应 */
+		height: 1.82rem; /* 与输入框/按钮同高 */
+		border: 2px solid #ddd; /* 补充边框颜色，避免透明 */
+		border-right: none; /* 去掉右侧边框，避免和输入框重复 */
 	}
 
-	/* 输入框 */
-	.in5{
-		width: 100%;
-		position: relative;
+	.Select-box {
+		display: none;
+		float: none;
 	}
 
+	.Select-box li{
+		background-color: yellow;
+		display: none;
+		float: none;
+	}
+	/*输入框样式 - 核心修改：水平定位+垂直居中+消除间距*/
 	#kw-2{
-		width: 100% !important;
-		height: 48px !important;
-		border-radius: 6px;
-		font-size: 18px;
-		padding: 0 12px !important;
-		background: #ffffff !important;
-		box-sizing: border-box;
-		border: none;
+		width: 8rem;
+		height: 1.82rem;
+		border: 2px solid #ddd; /* 补充边框颜色，与下拉框统一 */
+		border-left: none; /* 去掉左侧边框，与下拉框无缝衔接 */
+		border-right: none; /* 去掉右侧边框，与按钮无缝衔接 */
+		position: absolute;
+		left: 3.5rem; /* 紧贴下拉框（下拉框宽度≈3.5rem），无间距 */
+		top: 50%; /* 垂直居中第一步 */
+		transform: translateY(-50%); /* 垂直居中第二步，随屏幕自适应 */
+		padding-left: 10px;
+	}
+	/*搜索框样式 - 核心修改：水平定位+垂直居中+消除间距*/
+	#su-2 {
+	    width: 2rem;
+	    text-align: center;
+	    line-height: 1.82rem; /* 与高度一致，文字垂直居中 */
+	    position: absolute;
+	    background-color: blue;
+	    border: 2px solid blue; /* 统一边框 */
+	    right: 1rem; /* 固定右侧位置，与输入框紧贴 */
+	    border-radius: 0;
+	    height: 1.82rem;
+	    top: 50%; /* 垂直居中第一步 */
+	    transform: translateY(-50%); /* 垂直居中第二步，随屏幕自适应 */
+	    color: white; /* 文字变白，避免看不见 */
+	}
+	#su-2:hover{
+		background-color: blue;
 	}
 
-	/* 搜索按钮 */
-	#su-2{
-		width: 100% !important;
-		height: 48px !important;
-		line-height: 48px !important;
-		background: blue !important;
-		color: white;
-		font-size: 20px;
-		border-radius: 6px;
-		border: none !important;
-		text-align: center;
+	#su-2:active{ /* 修正拼写错误，不影响布局但避免语法问题 */
+		background-color: blue;
+		box-shadow: none;	
 	}
-
-	#su-2:hover,
-	#su-2:active{
-		background: blue !important;
-	}
-
-	/* 内容区宽度继承 */
+	
+	/*content下的所有div宽度（保留最初）*/
 	.content div{
 		width: 100%;
 	}
-
-	/* 列表模块宽度 */
+	/*每个选择框的宽度（保留最初）*/
 	.content li{
 		width: 4.69rem;
 	}
-
-	/* PC 页脚隐藏 */
+	/*放弃content外的footer（保留最初）*/
 	.footer{  
 		display: none;
 	}
-
-	/* 移动端 footer 显示 */
+	/*移动端使用的footer（保留最初）*/
 	.footer1{
 		display: block;
 		text-align: center;
@@ -116,14 +114,10 @@
 		color:white;
 	}
 
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"] {
-		-webkit-appearance: none;
+	input[type="button"], input[type="submit"], input[type="reset"] {
+	-webkit-appearance: none;
 	}
 
-	textarea {
-		-webkit-appearance: none;
-	}
-
+	textarea {  -webkit-appearance: none;}  
+	
 }
