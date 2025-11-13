@@ -77,3 +77,22 @@
     width: 100% !important;
   }
 }
+/* —— 补丁：修复左侧百度按钮错位 —— */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* 左侧搜索引擎选择器取消绝对定位和旧宽度 */
+  .Select-box-2 {
+    position: static !important;
+    width: auto !important;
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 包含输入框的 in5 取消原始 margin */
+  .in5 {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
