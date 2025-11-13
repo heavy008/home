@@ -1,40 +1,79 @@
-/* 适配平板端（769px–1024px），只调整 baidu-2 相关的样式 */
+/* ——————————— */
+/* 平板端专属修复（769px–1024px） */
+/* ——————————— */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* 使用 flex 布局让元素垂直居中，并占满父容器宽度 */
+
+  /* 整个搜索栏变成 flex，禁止 float 冲突 */
   .baidu-2 form {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px;                /* 三元素间距 */
+    width: 100% !important;
+    height: 60px !important;  /* 搜索栏高度，平板适配 */
+    box-sizing: border-box;
+  }
+
+  /* 左边选择框（百度/谷歌/必应） */
+  .baidu-2 .Select-box-2 {
+    position: relative !important;
+    float: none !important;
+    height: 60px !important;
+    line-height: 60px !important;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 2.6rem;      /* 移动端已用 2.6rem，可继续沿用 */
-    width: 100%;
-    padding: 0;
   }
 
-  /* 平板端显示第一个搜索引擎按钮（“百度”）即可，其它引擎在点击后弹出 */
   .baidu-2 .Select-box-2 li {
-    height: 2.6rem;
-    line-height: 2.6rem;
-    padding: 0 16px;
-    box-sizing: border-box;
+    height: 60px !important;
+    line-height: 60px !important;
+    padding: 0 18px !important;
+    white-space: nowrap;
   }
 
-  /* 调整输入框宽度和内边距，使其占据剩余空间 */
+  /* 中间输入框区域 */
+  .baidu-2 .in5 {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    height: 60px !important;
+    position: relative !important;
+  }
+
   #kw-2 {
-    flex: 1 1 auto;
-    height: 2.6rem;
-    line-height: 2.6rem;
-    padding: 0 12px;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-right: none;
+    flex: 1 !important;
+    height: 60px !important;
+    line-height: 60px !important;
+    padding: 0 16px !important;
+    font-size: 20px !important;
     box-sizing: border-box;
   }
 
-  /* 搜索按钮高度与行高保持一致，内容居中 */
-  input#su-2 {
-    height: 2.6rem;
-    line-height: 2.6rem;
-    padding: 0 16px;
+  /* 清空按钮固定在右内侧 */
+  .baidu-2 .qingkong {
+    position: absolute !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%);
+    height: 24px !important;
+    width: 24px !important;
+    line-height: 24px !important;
+    text-align: center;
+  }
+
+  /* 右侧搜索按钮 */
+  #su-2 {
+    height: 60px !important;
+    line-height: 60px !important;
+    padding: 0 24px !important;
+    font-size: 20px !important;
     box-sizing: border-box;
+    flex-shrink: 0;
+  }
+
+  /* 避免桌面 float 干扰 */
+  .baidu {
+    float: none !important;
+    width: 100% !important;
   }
 }
