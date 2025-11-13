@@ -95,4 +95,23 @@
     padding: 0 !important;
   }
 }
+/* —— 最终补丁：修复百度按钮整体下坠 —— */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  /* 让下拉列表的 UL 不再使用桌面端的 top 偏移 */
+  .Select-box-2 ul {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  /* 让 li 保持水平布局所需的默认状态 */
+  .Select-box-2 ul li {
+    display: block !important;
+    margin: 0 !important;
+  }
+
+}
 
