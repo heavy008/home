@@ -7,15 +7,15 @@
 		height: 100%;
 		width: 100%;
 	}
-	/* 内容容器：仅负责居中，不干扰子元素样式 */
+	/* 内容容器：居中+上移40px+右移3px */
 	.content{
 		width: 90%;
 		max-width: 320px;
 		display: flex;
   		flex-direction: column;
- 		justify-content: center; /* 避免space-around打乱常用网站布局 */
+ 		justify-content: center;
   		align-items: center;
-  		gap: 20px; /* 搜索区域和常用网站之间留间距 */
+  		gap: 20px; /* 搜索框与常用网站间距 */
   		position: absolute;
   		top:26%;
   		left: 50%;
@@ -23,7 +23,7 @@
   		margin-top: -40px;
 	}
 
-	/* 搜索框容器：仅作用于搜索区域，不影响其他div */
+	/* 搜索区域：精准隔离样式，不污染其他元素 */
 	.content .baidu{
 		position: relative;
 		width: 100%;
@@ -37,7 +37,6 @@
 		height: 40px;
 	}
 
-	/* 百度下拉框：仅作用于baidu容器内的元素 */
 	.content .baidu #Select-2{
 		position: absolute;
 		left: 0;
@@ -49,11 +48,11 @@
 		border-radius: 4px 0 0 4px;
 	}
 
-	/* 下拉框选项：仅作用于baidu容器内的li */
 	.content .baidu .Select-box {
 		display: none;
 		float: none;
 	}
+
 	.content .baidu .Select-box li{
 		background-color: yellow;
 		display: none;
@@ -61,7 +60,6 @@
 		width: 4.69rem;
 	}
 
-	/* 输入框：仅作用于baidu容器内的#kw-2 */
 	.content .baidu #kw-2{
 		width: 160px;
 		height: 34px;
@@ -73,7 +71,6 @@
 		padding-left: 10px;
 	}
 
-	/* 搜索按钮：仅作用于baidu容器内的#su-2 */
 	.content .baidu #su-2 {
 	    width: 80px;
 	    text-align: center;
@@ -89,6 +86,7 @@
 	    color: white;
 	    margin-left: 5px; /* 与输入框留5px间距 */
 	}
+
 	#su-2:hover{
 		background-color: blue;
 	}
@@ -97,13 +95,47 @@
 		background-color: blue;
 		box-shadow: none;	
 	}
-	
-	/* 关键：删除全局的.content div/li样式！避免污染常用网站 */
-	/* 之前的 .content div{width: 100%;} 和 .content li{width: 4.69rem;} 已删除 */
 
+	/* ========== 常用网站移动端自适应（不改HTML） ========== */
+	/* 选择搜索框之后的区块（常用网站父容器）- 无需额外类 */
+	.content > div:nth-child(2) {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap; /* 自动换行，适配手机 */
+		gap: 10px; /* 按钮之间的间距 */
+		justify-content: center; /* 居中排列 */
+		padding: 10px 0;
+	}
+
+	/* 常用网站按钮（适配2列布局）- 兼容按钮/普通div */
+	.content > div:nth-child(2) > button,
+	.content > div:nth-child(2) > div {
+		width: calc(50% - 5px); /* 2列均分宽度，减去间距的一半 */
+		max-width: 150px; /* 限制最大宽度，避免太宽 */
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		background: #a07941; /* 匹配常见棕色按钮样式，可按实际调整 */
+		color: white;
+		border: none;
+		border-radius: 4px;
+		font-size: 16px;
+	}
+
+	/* 常用网站标题（若有）居中 */
+	.content > div:nth-child(2) > p {
+		width: 100%;
+		text-align: center;
+		color: white;
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+	/* 底部样式 */
 	.footer{  
 		display: none;
 	}
+
 	.footer1{
 		display: block;
 		text-align: center;
