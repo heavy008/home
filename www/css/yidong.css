@@ -7,83 +7,93 @@
 		height: 100%;
 		width: 100%;
 	}
-	/*内容样式：保留居中/上移/右移，限制最大宽度避免过度拉伸*/
+	/* 内容容器：仅负责居中，不干扰子元素样式 */
 	.content{
-		width: 90%; /* 用百分比适配但限制最大宽度 */
-		max-width: 320px; /* 核心：固定最大宽度，屏幕再大也不超过此值 */
+		width: 90%;
+		max-width: 320px;
 		display: flex;
   		flex-direction: column;
- 		justify-content: space-around;
+ 		justify-content: center; /* 改为center，避免space-around打乱常用网站布局 */
   		align-items: center;
+  		gap: 20px; /* 搜索区域和常用网站之间留间距 */
   		position: absolute;
   		top:26%;
   		left: 50%;
   		transform: translateX(calc(-50% + 3px));
   		margin-top: -40px;
 	}
-	/*搜索框容器：固定尺寸+居中，避免随屏幕放大*/
-	.baidu{
-		position: relative;
-		width: 100%; /* 继承content的max-width，不超过320px */
+
+	/* 单独给搜索区域加容器，避免样式污染常用网站 */
+	.search-area {
+		width: 100%;
 		max-width: 320px;
-		height: 40px; /* 固定高度，不随屏幕变化 */
+	}
+
+	/* 搜索框容器：仅作用于搜索区域 */
+	.search-area .baidu{
+		position: relative;
+		width: 100%;
+		max-width: 320px;
+		height: 40px;
 		left: 50%;
 		transform: translateX(-50%);
 	}
 
-	.baidu-2{
-		height: 40px; /* 与容器高度一致 */
+	.search-area .baidu-2{
+		height: 40px;
 	}
 
-	/*百度下拉框：固定尺寸+独立边框*/
-	#Select-2{
+	/* 百度下拉框：仅作用于搜索区域 */
+	.search-area #Select-2{
 		position: absolute;
 		left: 0;
 		top: 50%;
 		transform: translateY(-50%);
-		width: 80px; /* 固定宽度，不随屏幕放大 */
-		height: 34px; /* 固定高度 */
-		border: 2px solid #ddd; /* 独立边框，不与输入框共用 */
-		border-radius: 4px 0 0 4px; /* 左圆角，区分边界 */
+		width: 80px;
+		height: 34px;
+		border: 2px solid #ddd;
+		border-radius: 4px 0 0 4px;
 	}
 
-	.Select-box {
+	.search-area .Select-box {
 		display: none;
 		float: none;
 	}
 
-	.Select-box li{
+	.search-area .Select-box li{
 		background-color: yellow;
 		display: none;
 		float: none;
+		width: 4.69rem; /* 仅搜索区域的li用这个宽度 */
 	}
-	/*输入框：固定尺寸+间距+独立边框*/
-	#kw-2{
-		width: 160px; /* 固定宽度，不随屏幕放大 */
-		height: 34px; /* 固定高度 */
-		border: 2px solid #ddd; /* 独立边框 */
+
+	/* 输入框：仅作用于搜索区域 */
+	.search-area #kw-2{
+		width: 160px;
+		height: 34px;
+		border: 2px solid #ddd;
 		position: absolute;
-		left: 85px; /* 与下拉框之间留5px间距 */
+		left: 85px;
 		top: 50%;
 		transform: translateY(-50%);
 		padding-left: 10px;
 	}
-	/*搜索按钮：固定尺寸+间距+独立边框*/
-	#su-2 {
-	    width: 80px; /* 固定宽度，不随屏幕放大 */
+
+	/* 搜索按钮：仅作用于搜索区域 */
+	.search-area #su-2 {
+	    width: 80px;
 	    text-align: center;
-	    line-height: 34px; /* 与高度一致，文字居中 */
+	    line-height: 34px;
 	    position: absolute;
 	    background-color: blue;
-	    border: 2px solid blue; /* 独立边框 */
-	    right: 0; /* 固定在容器右侧 */
-	    left: auto; /* 取消之前的left定位 */
-	    border-radius: 0 4px 4px 0; /* 右圆角，区分边界 */
-	    height: 34px; /* 固定高度 */
+	    border: 2px solid blue;
+	    right: 0;
+	    border-radius: 0 4px 4px 0;
+	    height: 34px;
 	    top: 50%;
 	    transform: translateY(-50%);
 	    color: white;
-	    margin-left: 5px; /* 与输入框之间留5px间距 */
+	    margin-left: 5px;
 	}
 	#su-2:hover{
 		background-color: blue;
@@ -94,12 +104,25 @@
 		box-shadow: none;	
 	}
 	
-	.content div{
+	/* 取消全局.content div/li样式，避免污染常用网站 */
+	/* .content div{width: 100%;} （删除这行）*/
+	/* .content li{width: 4.69rem;} （删除这行）*/
+
+	/* 常用网站样式：恢复原有布局 */
+	.common-sites {
 		width: 100%;
 	}
-	.content li{
-		width: 4.69rem;
+	.common-sites .site-btn {
+		width: 100%; /* 按钮占满容器宽度 */
+		height: 40px;
+		line-height: 40px;
+		background: #a07941; /* 匹配截图里的棕色 */
+		color: white;
+		border: none;
+		margin: 8px 0;
+		font-size: 16px;
 	}
+
 	.footer{  
 		display: none;
 	}
